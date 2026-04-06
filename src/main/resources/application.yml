@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: order-service
+
+  datasource:
+    url: jdbc:postgresql://ecommerce-db.cs9c6ck2kjv1.us-east-1.rds.amazonaws.com:5432/ecommerce
+    username: dbadmin
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.ecommerce.order_service: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+
+aws:
+  sqs:
+    region: us-east-1
+    orders-queue-url: https://sqs.us-east-1.amazonaws.com/483692969455/orders-queue
+    lambda-orders-queue-url: https://sqs.us-east-1.amazonaws.com/483692969455/lambda-orders-queue
